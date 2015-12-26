@@ -1,0 +1,21 @@
+<html>
+	<head>
+		<title>SpringBoot AngularJS Example</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>
+	</head>
+	<body ng-app="angularBootApp">
+		<div ng-congtroller="HelloController">
+			<p>ID is {{values.id}}</p>
+			<p>Content is {{values.content}}</p>
+		</div>	
+		<h2>Hello World!</h2>
+		<script>
+			var angularApp = angular.module("angularBootApp", []);
+			angularApp.controller("HelloController", function($scope, $http) {
+				$http.get("/greeting/").success(function(data) {
+					$scope.values = data;
+				})
+			});
+		</script>
+	</body>
+</html>
